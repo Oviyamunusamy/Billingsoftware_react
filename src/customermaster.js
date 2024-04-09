@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import "./billing.css";
-import { Menu } from "antd";
+import { Divider } from "antd";
 import {
   MailOutlined,
   AppstoreOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Form } from "react-router-dom";
+import profilepic from "./profilepic.jpg"
+import { Link } from "react-router-dom";
 function Customermaster() {
   
   const [openmaster, setopenmaster] = useState(true);
@@ -25,15 +26,26 @@ function Customermaster() {
   return (
     <>
       <div className="Full_container">
+        
         <div className="menu_container">
+        <div className="profile_container">
+          <img src={profilepic} className="image_menu"/>
+         <p className="profile_name">Joyaila</p>
+        </div>
+        <Divider className="divider"/>
         <div className="dropdown">
       <button className="dropdown-button_1" onClick={handlemastermenu}>
         Master
       </button>
       {!openmaster && (
         <ul className="dropdown-menu">
+          <Link to="/itemmaster">
           <ol >Customer Name</ol>
+              </Link>
+          
+          <Link to="/itemmaster">
           <ol>Item master</ol>
+              </Link>
         </ul>
       )}
       <button className="dropdown-button_1" onClick={handleinvoicemenu}>
@@ -41,7 +53,9 @@ function Customermaster() {
       </button>
       {!openinvoice && (
         <ul className="dropdown-menu">
-          <ol>Gst invoice</ol>
+          <Link to="/gstinvoice">
+          <ol>GST invoice</ol>
+              </Link>
         </ul>
       )}
     
@@ -50,7 +64,10 @@ function Customermaster() {
       </button>
       {!openreport && (
         <ul className="dropdown-menu">
-          <ol>Report</ol>
+           <Link to="/gstinvoice">
+           <ol>Report</ol>
+              </Link>
+          
         </ul>
       )}
     </div>
@@ -61,7 +78,7 @@ function Customermaster() {
           <div className="inputfield_box">
             <div className="sub_input_1">
               <form>
-                <label>Firstname :</label>
+                <label>Customer Name :</label>
                 <input
                   className="input_field"
                   type="text"
@@ -71,21 +88,21 @@ function Customermaster() {
                 ></input>
               </form>
               <form>
-                <label>Firstname :</label>
+                <label>Customer Lastname :</label>
                 <input
                   className="input_field"
                   type="text"
-                  placeholder="Firstname..."
+                  placeholder="Customer Lastname..."
                   // value={dob2}
                   // onChange={handledateofbirthtwo}
                 ></input>
               </form>
               <form>
-                <label>Firstname :</label>
+                <label>A/C Group Name :</label>
                 <input
                   className="input_field"
                   type="text"
-                  placeholder="Firstname..."
+                  placeholder="A/C Group Name..."
                   // value={dob2}
                   // onChange={handledateofbirthtwo}
                 ></input>
@@ -93,21 +110,21 @@ function Customermaster() {
             </div>
             <div className="sub_input_2">
               <form>
-                <label>Firstname :</label>
+                <label>Opening Balance :</label>
                 <input
                   className="input_field"
                   type="text"
-                  placeholder="Firstname..."
+                  placeholder="Opening Balance..."
                   // value={dob2}
                   // onChange={handledateofbirthtwo}
                 ></input>
               </form>
               <form>
-                <label>Firstname :</label>
+                <label>Credit/Debit :</label>
                 <input
                   className="input_field"
                   type="text"
-                  placeholder="Firstname..."
+                  placeholder="Credit/Debit..."
                   // value={dob2}
                   // onChange={handledateofbirthtwo}
                 ></input>
@@ -121,61 +138,61 @@ function Customermaster() {
             <div className="inputfield_box">
           <div className="sub_input_3">
           <form>
-              <label>Firstname :</label>
+              <label>Address :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Address"
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>State :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="State"
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Pincode :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Pincode"
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Mobile No :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Mobile No..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Email Id :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Email Id"
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>GST No :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="GST No"
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
@@ -183,61 +200,61 @@ function Customermaster() {
           </div>
           <div className="sub_input_4">
             <form>
-              <label>Firstname :</label>
+              <label>Website :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Website..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>PAN No :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="PAN No..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Contact Person :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Contact Person..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Alternative Mobile :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Alternative Mobile..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Alternative Email :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Alternative Email..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
             </form>
             <form>
-              <label>Firstname :</label>
+              <label>Other No :</label>
               <input
                 className="input_field"
                 type="text"
-                placeholder="Firstname..."
+                placeholder="Other No..."
                 // value={dob2}
                 // onChange={handledateofbirthtwo}
               ></input>
