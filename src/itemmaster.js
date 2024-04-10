@@ -40,7 +40,7 @@ function Customermaster() {
                 <Link to="/customermaster">
                   <ol>Customermaster</ol>
                 </Link>
-                <Link to="/gstinvoice">
+                <Link to="/itemmaster">
                 <ol>Item master</ol>
                 </Link>
               </ul>
@@ -62,7 +62,7 @@ function Customermaster() {
             </button>
             {!openreport && (
               <ul className="dropdown-menu">
-                <Link to="/gstinvoice">
+                <Link to="/report">
                 <ol>Report</ol>
                 </Link>
                 

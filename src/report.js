@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import "./billing.css";
-import { Divider, Button,Table} from "antd";
+import { Divider, Button, Table, DatePicker } from "antd";
+
 import {
-  MailOutlined,
-  AppstoreOutlined,
+  SearchOutlined,
+  PlusOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 import profilepic from "./profilepic.jpg";
@@ -12,6 +13,7 @@ function Customermaster() {
   const [openmaster, setopenmaster] = useState(true);
   const [openinvoice, setopeninvoice] = useState(true);
   const [openreport, setopenreport] = useState(true);
+  const [onSearch, setonSearch] = useState(true);
 
   const handlemastermenu = () => {
     setopenmaster(!openmaster);
@@ -22,61 +24,66 @@ function Customermaster() {
   const handlereportmenu = () => {
     setopenreport(!openreport);
   };
+  const handlesearch = (key) => {
+    setonSearch(key);
+  };
+  const handledatepicker = (d) => {
+    setonSearch(d);
+  };
   const columns = [
     {
-      title: 'S.No',
-      dataIndex: 'S.no',
+      title: "S.No",
+      dataIndex: "S.no",
     },
     {
-      title: 'Customer name',
-      dataIndex: 'Customername',
+      title: "Customer name",
+      dataIndex: "Customername",
     },
     {
-      title: 'Inv.amt',
-      dataIndex: 'Inv.amt',
+      title: "Inv.amt",
+      dataIndex: "Inv.amt",
     },
     {
-        title: 'CGST.amt',
-        dataIndex: 'CGST.amt',
-      },
-      {
-        title: 'SGST.amt',
-        dataIndex: 'SGSTamt',
-      },
-      {
-        title: 'IGST.amt',
-        dataIndex: 'IGST.amt',
-      },
-      {
-        title: 'UGST.amt',
-        dataIndex: 'UGST.amt',
-      },
-      {
-        title: 'FreightAmt',
-        dataIndex: 'FreightAmt',
-      },
-      {
-        title: 'Disc.Amt',
-        dataIndex: 'Disc.Amt',
-      },
+      title: "CGST.amt",
+      dataIndex: "CGST.amt",
+    },
+    {
+      title: "SGST.amt",
+      dataIndex: "SGSTamt",
+    },
+    {
+      title: "IGST.amt",
+      dataIndex: "IGST.amt",
+    },
+    {
+      title: "UGST.amt",
+      dataIndex: "UGST.amt",
+    },
+    {
+      title: "FreightAmt",
+      dataIndex: "FreightAmt",
+    },
+    {
+      title: "Disc.Amt",
+      dataIndex: "Disc.Amt",
+    },
   ];
   const data = [
     {
-      key: '1',
-      SGSTamt: 'Currently no data!',
-     
+      key: "1",
+      SGSTamt: "Currently no data!",
     },
     {
-      key: '2',
-      name: 'Jim Green',
+      key: "2",
+      name: "Jim Green",
       age: 42,
-      address: 'London No. 1 Lake Park',
+      address: "London No. 1 Lake Park",
     },
     {
-      key: '3',
-      name: 'Joe Black',
+      key: "3",
+      name: "Joe Black",
       age: 32,
-      address: 'Sydney No. 1 Lake Park',
+      address: "Sydney No. 1 Lake Park",
     },
   ];
   return (
@@ -129,57 +136,68 @@ function Customermaster() {
             <div className="inputfield_box_1">
               <div className="sub_input_5">
                 <form className="form_input">
-                  <label>Customer Name :</label>
+                  <label>Company Selection :</label>
                   <input
                     className="input_field"
                     type="text"
-                    placeholder="Firstname..."
+                    placeholder="..."
                     // value={dob2}
                     // onChange={handledateofbirthtwo}
                   ></input>
                 </form>
                 <form className="form_input">
-                  <label>Customer Lastname :</label>
-                  <input
-                    className="input_field"
-                    type="text"
-                    placeholder="Customer Lastname..."
-                    // value={dob2}
-                    // onChange={handledateofbirthtwo}
-                  ></input>
+                  <label>Start Date :</label>
+                  <DatePicker  className="input_date"
+                    onChange={(i) => handledatepicker(i.target.value)}
+                   
+                  />
                 </form>
                 <form className="form_input">
-                  <label>A/C Group Name :</label>
-                  <input
-                    className="input_field"
-                    type="text"
-                    placeholder="A/C Group Name..."
-                    // value={dob2}
-                    // onChange={handledateofbirthtwo}
-                  ></input>
+                  <label>End Date :</label>
+                  <DatePicker className="input_date"
+                    onChange={(i) => handledatepicker(i.target.value)}
+                    
+                  />
                 </form>
               </div>
               <div className="sub_input_6">
                 <form className="form_input">
-                  <label>Opening Balance :</label>
+                  <label>Company Selection :</label>
                   <input
                     className="input_field"
                     type="text"
-                    placeholder="Opening Balance..."
+                    placeholder="..."
                     // value={dob2}
                     // onChange={handledateofbirthtwo}
                   ></input>
                 </form>
                 <div className="button_container_report">
-                  <Button className="save_button">Save</Button>
-                  <Button className="clear_button">Clear</Button>
+                  <Button className="save_button">Download PDF</Button>
+                  <Button className="clear_button">
+                    <PlusOutlined />
+                    Print
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
           <div className="table_container">
-            
-          <Table columns={columns} dataSource={data} size="middle" className="table_design" />
+            <input
+              className="search_Input"
+              type="text"
+              placeholder="search input...."
+              onChange={(i) => handlesearch(i.target.value)}
+            />
+            <button className="search_Button">
+              {/* onClick={(d) =>handlesearchbutton(d.target.value)} */}
+              <SearchOutlined />
+            </button>
+            <Table
+              columns={columns}
+              dataSource={data}
+              size="middle"
+              className="table_design"
+            />
           </div>
         </div>
       </div>
